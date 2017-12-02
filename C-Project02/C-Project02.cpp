@@ -11,7 +11,6 @@ void main()
 {
 	int stop;
 	Matrix m(4, 4);
-	cout << "Man You Are Ugly" <<endl;
 	
 	cout << m << endl;
 	

@@ -1,4 +1,5 @@
-
+#include <ostream>
+using namespace std;
 
 class Matrix
 {
@@ -22,13 +23,12 @@ public:
 	//I/O
 
 	friend ostream& operator <<(ostream& out, const Matrix&);
+	
+
 
 	//Setter And Getters
 	int getWidth() const;
 	int getHeight() const;
-
-	//Test Temp Functions
-	void printMat();
 
 
 

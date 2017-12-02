@@ -53,26 +53,14 @@ int Matrix::getHeight() const
 	return this->height;
 }
 
-void Matrix::printMat()
-{
-	for (int i = 0; i < width; i++)
-	{
-		for (int j = 0; j < height; j++)
-		{
-			cout << mat[i][j] << " ";
-		}
-
-		cout << endl;
-	}
-}
 
 ostream & operator<<(ostream & out, const Matrix &m)
 {
-	for (int i = 0; i < m.getHeight(); i++)
+	for (int i = 0; i < m.height; i++)
 	{
-		for (int j = 0; j < m.getWidth(); j++)
+		for (int j = 0; j < m.width; j++)
 		{
-			out << m[i][j] << " ";
+			out << m.mat[i][j] << " ";
 		}
 		out << endl;
 	}

@@ -13,6 +13,7 @@ void main()
 	Matrix m(4, 4);
 	
 	cout << m << endl;
+	cout << "Damm!"<<endl;
 	
 	cin >> stop;
 

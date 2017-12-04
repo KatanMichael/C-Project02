@@ -80,24 +80,6 @@ int * Matrix::operator[](const int x) const
 	return mat[x];
 }
 
-Matrix & Matrix::operator=(const Matrix & copy) const
-{
-	Matrix ret(copy.getWidth(), copy.getHeight());
-
-	for (int i = 0; i < copy.getWidth(); i++)
-	{
-		for (int j = 0; j < copy.getHeight(); j++)
-		{
-			ret[i][j] = copy[i][j];
-		}
-	}
-
-	return ret;
-
-
-
-}
-
 Matrix& Matrix::operator+(const Matrix& m) const
 {
 
@@ -131,21 +113,21 @@ Matrix& Matrix::operator+(const Matrix& m) const
 Matrix & Matrix::operator-(const Matrix &m) const
 {
 	Matrix temp;
-	temp.mat = new int*[this->getWidth()];
+	temp.mat = new int*[m.getWidth()];
 
-	for (int i = 0; i < this->getHeight(); i++)
+	for (int i = 0; i < m.getHeight(); i++)
 	{
-		temp.mat[i] = new int[this->getHeight()];
+		temp.mat[i] = new int[m.getHeight()];
 	}
 
-	temp.height = this->getHeight();
-	temp.width = this->getWidth();
+	temp.height = m.getHeight();
+	temp.width = m.getWidth();
 
-	for (int i = 0; i < this->getWidth(); i++)
+	for (int i = 0; i < m.getWidth(); i++)
 	{
-		for (int j = 0; j < this->getHeight(); j++)
+		for (int j = 0; j < m.getHeight(); j++)
 		{
-			temp[i][j] = (*this)[i][j] * -1;
+			temp[i][j] = m[i][j] * -1;
 		}
 	}
 
@@ -165,4 +147,74 @@ ostream & operator<<(ostream & out, const Matrix &m)
 	}
 
 	return out;
+}
+
+
+
+void Matrixh::operator=(const Matrixh&  put)
+{
+	if (this->lenght == put.lenght)
+
+	{
+		if (width != put.width)
+		{
+
+			this->width = put.width;            //כדכן רק את הרוחב ותקצה מחדש כל שורה כי מספר השורות שווה ורק הרוחב שונה 
+
+			for (int i = 0; i<lenght; i++)
+			{
+				delete matrix[i];
+				matrix[i] = new int[width];
+				if (matrix[i] == NULL)
+				{
+					cout << "the allocation failed ,the program will close" << endl;
+					system("pause");
+					exit(1);
+				}
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i<lenght; i++)      //שחרר כל מה שהיה 
+		{
+			delete matrix[i];
+		}
+		delete matrix;
+
+		this->lenght = put.lenght;    //תעדכן אורך ורוחב 
+		this->width = put.width;
+
+		matrix = new int*[lenght];  //תקצה מחדש את המקום למטריצה 
+		if (matrix == NULL)
+		{
+			cout << "the allocation failed ,the program will close" << endl;
+			system("pause");
+			exit(1);
+		}
+		else
+		{
+			for (int i = 0; i<lenght; i++)
+			{
+				matrix[i] = new int[width];
+				if (matrix[i] == NULL)
+				{
+					cout << "the allocation failed ,the program will close" << endl;
+					system("pause");
+					exit(1);
+				}
+			}
+		}
+	}
+
+
+
+
+	for (int i = 0; i<lenght; i++)         //השמת כל המטריצה בכל מקרה  
+	{
+		for (int j = 0; j<width; j++)
+		{
+			matrix[i][j] = put[i][j];
+		}
+	}
 }

@@ -94,9 +94,11 @@ Matrix & Matrix::operator=(const Matrix & copy) const
 
 	return ret;
 
+
+
 }
 
-Matrix& Matrix::operator+(const Matrix& m)
+Matrix& Matrix::operator+(const Matrix& m) const
 {
 
 	if (this->getHeight() != m.getHeight())
@@ -124,6 +126,30 @@ Matrix& Matrix::operator+(const Matrix& m)
 		}
 	
 		return temp;
+}
+
+Matrix & Matrix::operator-(const Matrix &m) const
+{
+	Matrix temp;
+	temp.mat = new int*[m.getWidth()];
+
+	for (int i = 0; i < m.getHeight(); i++)
+	{
+		temp.mat[i] = new int[m.getHeight()];
+	}
+
+	temp.height = m.getHeight();
+	temp.width = m.getWidth();
+
+	for (int i = 0; i < m.getWidth(); i++)
+	{
+		for (int j = 0; j < m.getHeight(); j++)
+		{
+			temp[i][j] = m[i][j] * -1;
+		}
+	}
+
+	return temp;
 }
 
 

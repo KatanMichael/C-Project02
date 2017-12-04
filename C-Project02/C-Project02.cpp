@@ -16,10 +16,7 @@ void main()
 	m[0][0] = 2;
 	m[1][1] = 2;
 	
-	s[1][0] = 2;
-	s[0][1] = 2;
-
-	sum = s + m;
+	
 
 	cout << m << endl;
 	cout << s << endl;

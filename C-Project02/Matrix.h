@@ -22,7 +22,8 @@ public:
 	//Operators Overloading
 	int* operator[](const int x) const;
 	Matrix& operator=(const Matrix& copy) const;
-	Matrix& operator+(const Matrix&);
+	Matrix& operator+(const Matrix&)const ;
+	Matrix& operator-(const Matrix&)const ;
 
 	//I/O
 	friend ostream& operator <<(ostream& out, const Matrix&);

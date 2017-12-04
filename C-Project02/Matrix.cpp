@@ -131,21 +131,21 @@ Matrix& Matrix::operator+(const Matrix& m) const
 Matrix & Matrix::operator-(const Matrix &m) const
 {
 	Matrix temp;
-	temp.mat = new int*[m.getWidth()];
+	temp.mat = new int*[this->getWidth()];
 
-	for (int i = 0; i < m.getHeight(); i++)
+	for (int i = 0; i < this->getHeight(); i++)
 	{
-		temp.mat[i] = new int[m.getHeight()];
+		temp.mat[i] = new int[this->getHeight()];
 	}
 
-	temp.height = m.getHeight();
-	temp.width = m.getWidth();
+	temp.height = this->getHeight();
+	temp.width = this->getWidth();
 
-	for (int i = 0; i < m.getWidth(); i++)
+	for (int i = 0; i < this->getWidth(); i++)
 	{
-		for (int j = 0; j < m.getHeight(); j++)
+		for (int j = 0; j < this->getHeight(); j++)
 		{
-			temp[i][j] = m[i][j] * -1;
+			temp[i][j] = (*this)[i][j] * -1;
 		}
 	}
 

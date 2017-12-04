@@ -11,12 +11,12 @@ void main()
 {
 	system("color f0");
 	Matrix m(2, 2);
-	Matrix s(2,2);
+	Matrix s;
 	Matrix sum;
 	m[0][0] = 2;
 	m[1][1] = 2;
 	
-	
+	s = (-m);
 
 	cout << m << endl;
 	cout << s << endl;

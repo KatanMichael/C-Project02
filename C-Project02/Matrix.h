@@ -1,3 +1,5 @@
+
+
 #include <ostream>
 using namespace std;
 
@@ -13,15 +15,16 @@ private:
 public:
 
 	Matrix(int width, int height); //Constructor
-	//Matrix(const Matrix& m); //Copy Constructor
+	Matrix(const Matrix& m); //Copy Constructor
+	Matrix(); // Empty Constructor
 	~Matrix(); // Destructor
 
 	//Operators Overloading
 	int* operator[](const int x) const;
-
+	Matrix& operator=(const Matrix& copy) const;
+	Matrix& operator+(const Matrix&);
 
 	//I/O
-
 	friend ostream& operator <<(ostream& out, const Matrix&);
 	
 
